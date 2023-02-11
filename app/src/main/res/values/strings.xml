@@ -21,7 +21,7 @@
     </string>
     <string name="register_title">Create an account</string>
     <string name="register_sub_title">
-        <font color="#00C9B8">Register </font>if you already have an account</string>
+        <font color="#00C9B8">Register </font>if you don't have an account</string>
     <string name="register_fullname">Your Name</string>
     <string name="register_email">Email</string>
     <string name="register_username">Phone Number</string>
