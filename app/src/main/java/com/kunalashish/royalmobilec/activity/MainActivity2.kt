@@ -1,4 +1,4 @@
-package com.kunalashish.royalmobilec
+package com.kunalashish.royalmobilec.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +17,10 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
         binding.btnRegister.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 

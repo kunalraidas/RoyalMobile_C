@@ -1,4 +1,4 @@
-package com.kunalashish.royalmobilec
+package com.kunalashish.royalmobilec.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kunalashish.royalmobilec.databinding.ActivityHomeBinding
