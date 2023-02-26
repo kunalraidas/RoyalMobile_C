@@ -1,5 +1,4 @@
 package com.kunalashish.royalmobilec
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.Toolbar
@@ -24,7 +23,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
     }
-
 
 
 }

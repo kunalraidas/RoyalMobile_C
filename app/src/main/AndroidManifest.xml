@@ -13,6 +13,9 @@
         android:theme="@style/Theme.RoyalMobileC"
         tools:targetApi="31">
         <activity
+            android:name=".Forgot_password_Activity"
+            android:exported="false" />
+        <activity
             android:name=".AddAddressActivity"
             android:exported="false" />
         <activity

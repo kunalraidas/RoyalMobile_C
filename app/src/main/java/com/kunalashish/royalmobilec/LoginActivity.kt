@@ -20,5 +20,8 @@ class LoginActivity : AppCompatActivity() {
         binding.haventAccount.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
         }
+        binding.forgotPw.setOnClickListener {
+            startActivity(Intent(this,Forgot_password_Activity::class.java))
+        }
     }
 }
