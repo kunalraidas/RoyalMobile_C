@@ -45,5 +45,6 @@
     <string name="navigation_drawer">Navigation Drawer</string>
     <string name="Notification">"Notification "</string>
     <string name="my_rewards">My Rewards</string>
+    <string name="login_details">User_login_details</string>
 
 </resources>
