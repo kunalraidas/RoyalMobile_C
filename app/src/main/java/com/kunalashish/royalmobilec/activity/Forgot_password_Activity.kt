@@ -1,10 +1,9 @@
-package com.kunalashish.royalmobilec
+package com.kunalashish.royalmobilec.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kunalashish.royalmobilec.databinding.ActivityForgotPasswordBinding
-import com.kunalashish.royalmobilec.databinding.ActivityLoginBinding
 
 class Forgot_password_Activity : AppCompatActivity() {
 
@@ -16,7 +15,8 @@ class Forgot_password_Activity : AppCompatActivity() {
         //setContentView(R.layout.activity_forgot_password)
 
         binding.rstPassGoBack.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
+
     }
 }

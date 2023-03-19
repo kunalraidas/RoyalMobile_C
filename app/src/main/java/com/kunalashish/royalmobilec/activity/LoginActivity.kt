@@ -1,4 +1,4 @@
-package com.kunalashish.royalmobilec
+package com.kunalashish.royalmobilec.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -16,13 +16,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
         binding.haventAccount.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
         binding.forgotPw.setOnClickListener {
-            startActivity(Intent(this,Forgot_password_Activity::class.java))
+            startActivity(Intent(this, Forgot_password_Activity::class.java))
         }
     }
 }

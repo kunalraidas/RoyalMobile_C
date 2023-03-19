@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RoyalMobile(C)</string>
+    <string name="app_name">Royal Mobile</string>
     <string name="started_title">Hello You!</string>
     <string name="started_sub_title">
         Nice to meet you, come join our community!
@@ -30,7 +30,7 @@
     <string name="home_sub_title">Welcome to home</string>
     <string name="btn_logout">LOGOUT</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Favourits fragment</string>
 
     <string name="open_drawer">Open drawer</string>
     <string name="close_drawer">close Drawer</string>
