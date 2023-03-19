@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
 
         val runnable = Runnable { // this code will run after 2 seconds
             startActivity(Intent(this@MainActivity, MainActivity2::class.java))
+            finish()
         }
         Handler().postDelayed(runnable, 2000)
-
 
     }
 }

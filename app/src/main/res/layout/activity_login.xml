@@ -20,19 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!--    second-->
 
-    <TextView
-        android:id="@+id/login_sub_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/login_sub_title"
-        android:textAlignment="center"
-        style="@style/SubTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/login_title" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_container"
@@ -43,7 +31,7 @@
         style="@style/TextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_sub_title"
+        app:layout_constraintTop_toBottomOf="@id/login_title"
         app:startIconDrawable="@drawable/ic_circle_account">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +40,8 @@
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +52,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="@string/login_password"
+        app:passwordToggleTint="@color/black"
+        app:counterMaxLength="16"
+        app:counterEnabled="true"
+        app:passwordToggleEnabled="true"
         style="@style/TextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
