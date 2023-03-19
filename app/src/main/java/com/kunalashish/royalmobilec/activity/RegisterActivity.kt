@@ -2,6 +2,7 @@ package com.kunalashish.royalmobilec.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.telecom.Call
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kunalashish.royalmobilec.data.model.Register_Request
@@ -12,9 +13,8 @@ import com.kunalashish.royalmobilec.network.NetworkService
 import com.kunalashish.royalmobilec.utils.Constant.user_login
 import com.kunalashish.royalmobilec.utils.Constant.user_pref
 import com.kunalashish.royalmobilec.utils.Constant.user_register
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
+import javax.security.auth.callback.Callback
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -70,9 +70,9 @@ class RegisterActivity : AppCompatActivity() {
             last_name = last_name, phone_no = phone, cust_address = cust_address ,
             delivery_address = delivery_address, pincode = pincode ))
 
-        r.enqueue(object : Callback<Simple_Response?> {
+        r.enqueue(object : retrofit2.Callback<Simple_Response?> {
             override fun onResponse(
-                call: Call<Simple_Response?>,
+                call: retrofit2.Call<Simple_Response?>,
                 response: Response<Simple_Response?>
             ) {
                 val b = response.body()
@@ -98,7 +98,7 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<Simple_Response?>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<Simple_Response?>, t: Throwable) {
 
 //                binding.loginTitle.text = t.message.toString()
                  binding.registerTitle.text = t.message.toString()
