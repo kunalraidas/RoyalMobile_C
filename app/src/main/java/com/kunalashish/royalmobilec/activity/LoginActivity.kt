@@ -37,6 +37,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
 
         }
+        binding.forgotPw.setOnClickListener {
+            startActivity(Intent(this, Forgot_password_Activity::class.java))
+        }
     }
 
     private fun isLoggedIn(){

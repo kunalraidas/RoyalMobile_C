@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="Royal_Mobile"
+        app:menu="@menu/search_icon"
         android:minHeight="?attr/actionBarSize"
         android:background="@color/primary_color"
         app:layout_scrollFlags="scroll|enterAlways"/>
