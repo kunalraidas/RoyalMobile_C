@@ -6,10 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kunalashish.royalmobilec.data.model.Register_Request
 import com.kunalashish.royalmobilec.data.response.Simple_Response
-
 import com.kunalashish.royalmobilec.databinding.ActivityRegisterBinding
 import com.kunalashish.royalmobilec.network.NetworkService
-import com.kunalashish.royalmobilec.utils.Constant.user_login
 import com.kunalashish.royalmobilec.utils.Constant.user_pref
 import com.kunalashish.royalmobilec.utils.Constant.user_register
 import retrofit2.Call
@@ -21,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,10 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(this.binding.root)
 
         binding.btnRegister.setOnClickListener {
-
             registerCustomer()
-            startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
-            finish()
         }
 
         binding.haveAccount.setOnClickListener {
@@ -49,6 +45,9 @@ class RegisterActivity : AppCompatActivity() {
         val passwordRegex = Regex(pattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=_!])(?=\\S+$).{8,}$")
         return passwordRegex.matches(password)
     }
+
+
+
 
     private fun registerCustomer()
     {
@@ -85,7 +84,8 @@ class RegisterActivity : AppCompatActivity() {
                         s.putString(user_register,email)
                         s.apply()
                         Toast.makeText(this@RegisterActivity,"Register Successfully",Toast.LENGTH_LONG).show()
-
+                        startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
+                        finish()
                     }
                     else
                     {
@@ -100,12 +100,10 @@ class RegisterActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<Simple_Response?>, t: Throwable) {
 
-//                binding.loginTitle.text = t.message.toString()
                  binding.registerTitle.text = t.message.toString()
                 Toast.makeText(this@RegisterActivity,t.message.toString(),Toast.LENGTH_LONG).show()
             }
         })
-
 
     }
 

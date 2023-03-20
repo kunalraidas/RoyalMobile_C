@@ -18,7 +18,6 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
     var customerEmail : String ? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +26,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         isLoggedIn()
+        startActivity(Intent(this,HomeActivity::class.java))
+        finish()
 
         binding.btnLogin.setOnClickListener {
             validateCustomer()
-            startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
-            finish()
+
         }
         binding.haventAccount.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
@@ -57,7 +57,9 @@ class LoginActivity : AppCompatActivity() {
     private fun isPasswordValid(password: String): Boolean {
         val passwordRegex = Regex(pattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=_!])(?=\\S+$).{8,}$")
         return passwordRegex.matches(password)
+
     }
+
 
 
 
@@ -85,6 +87,8 @@ class LoginActivity : AppCompatActivity() {
                         s.putString(user_login,email)
                         s.apply()
                         Toast.makeText(this@LoginActivity,"Login successfully", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+                        finish()
                     }
                     else
                     {
@@ -102,6 +106,4 @@ class LoginActivity : AppCompatActivity() {
             }
         })
     }
-
-
 }
