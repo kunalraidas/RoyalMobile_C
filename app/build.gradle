@@ -117,5 +117,7 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //other
+    implementation 'com.google.android.material:material:1.2.0'
 
 }
