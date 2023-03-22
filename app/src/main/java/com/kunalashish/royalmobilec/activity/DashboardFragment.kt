@@ -5,21 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import com.kunalashish.royalmobilec.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
+import com.kunalashish.royalmobilec.adapter.AllProductsAdapter
+import com.kunalashish.royalmobilec.data.product.Product
+import com.kunalashish.royalmobilec.databinding.FragmentDashboardBinding
+import com.kunalashish.royalmobilec.network.NetworkService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
+    lateinit var binding : FragmentDashboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    companion object{
+        val db = NetworkService.networkInstance
     }
 
     override fun onCreateView(
@@ -27,27 +32,32 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        return view
+        val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        binding =   FragmentDashboardBinding.bind(view)
+
+        loadProducts()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DashboardFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DashboardFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun loadProducts() {
+        val r = db.getAllProduct()
+        r.enqueue(object : Callback<List<Product>?> {
+            override fun onResponse(
+                call: Call<List<Product>?>,
+                response: Response<List<Product>?>
+            ) {
+                if(response.body()!=null){
+                    binding.rvAllProducts.adapter = AllProductsAdapter(requireContext(),response.body()!!,db)
+                }else{
+                    Toast.makeText(requireContext(), "Response is null", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            override fun onFailure(call: Call<List<Product>?>, t: Throwable) {
+                Toast.makeText(requireContext(), "Fail : $t", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
+
+
 }
