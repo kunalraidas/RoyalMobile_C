@@ -86,9 +86,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+
 
        <androidx.appcompat.widget.LinearLayoutCompat
            android:layout_width="match_parent"
@@ -126,20 +124,7 @@
                android:inputType="textPersonName"
                android:textSize="16sp" />
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:fontFamily="@font/montserrat"
-               android:text="Email  "
-               android:textSize="18sp"
-               android:textStyle="bold" />
 
-           <EditText
-               android:id="@+id/editEmailName"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:editable="false"
-               android:textSize="16sp" />
 
            <TextView
                android:layout_width="match_parent"
@@ -194,8 +179,6 @@
 
 
        </androidx.appcompat.widget.LinearLayoutCompat>
-
-   </ScrollView>
 
 
 </LinearLayout>
