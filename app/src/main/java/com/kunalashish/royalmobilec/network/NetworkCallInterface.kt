@@ -12,36 +12,48 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface NetworkCallInterface
-{
+interface NetworkCallInterface {
     @POST("v1/customer/login")
-    fun login(@Body loginDetails: Login_Request) : Call<Simple_Response>
+    fun login(@Body loginDetails: Login_Request): Call<Simple_Response>
 
     @POST("v1/customer/register")
-    fun register(@Body registerDetails: Register_Request) : Call<Simple_Response>
+    fun register(@Body registerDetails: Register_Request): Call<Simple_Response>
 
     @GET("product/getAllProduct")
-    fun getAllProduct() : Call<List<Product>>
+    fun getAllProduct(): Call<List<Product>>
 
     @GET("category/get-category-id")
-    fun getCategoryById(@Query("cate_id") id : Int) : Call<Category>
+    fun getCategoryById(@Query("cate_id") id: Int): Call<Category>
 
     @GET("product/getAllMobile")
-    fun getAllMobiles() : Call<List<Mobile>>
+    fun getAllMobiles(): Call<List<Mobile>>
 
     @GET("product/getAllAccessories")
-    fun getAllAccessories() : Call<List<Accessories>>
+    fun getAllAccessories(): Call<List<Accessories>>
 
     @GET("brand/getAll")
-    fun getBrand() : Call<List<Brand>>
+    fun getBrand(): Call<List<Brand>>
 
     @GET("category/getAll")
-    fun getCategory() : Call<List<Category>>
+    fun getCategory(): Call<List<Category>>
 
     @GET("customer/get")
-    fun getCustomerDetails(@Query("email")email : String) : Call<Customer>
+    fun getCustomerDetails(@Query("email") email: String): Call<Customer>
 
+    @POST("cart/add")
+    fun addToCart(
+        @Query("email") email: String,
+        @Query("qty") qty: Int,
+        @Query("mobile_id") mid: Int?,
+        @Query("color_id") cid: Int?,
+        @Query("access_id") asid: Int?,
+        @Body product: Product
+    ) : Call<Simple_Response>
 
+    @GET("cart/get_cart_by_email")
+    fun getCartById(@Query("email") email : String) : Call<List<Cart>>
 
+    @POST("cart/update")
+    fun updateCartQuantity(@Query("email") email : String,@Body p : Product,@Query("qty") qty : Int) : Call<Simple_Response>
 
 }
