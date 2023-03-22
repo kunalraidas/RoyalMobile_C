@@ -57,5 +57,6 @@
     <string name="we_have_sent_an_otp_for_changing_password_request_n_kindly_check_your_emails"><b>We have sent an OTP for changing password request\n kindly check your emails</b></string>
     <string name="change_password">Change Password</string>
     <string name="password">Password</string>
+    <string name="My_address">Parsuram Nagar,Nr.Rameshwar Mahadev,Meghani Nagar</string>
 
 </resources>

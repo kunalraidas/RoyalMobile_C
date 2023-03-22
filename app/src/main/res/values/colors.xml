@@ -13,4 +13,6 @@
     <color name="title_text_color">#213357</color>
     <color name="successgreen">#11A10C</color>
     <color name="colorAccent">#F30707</color>
+    <color name="order_selected_text_color">#70d5ab</color>
+    <color name="buttoncolor">#FB8C00</color>
 </resources>
