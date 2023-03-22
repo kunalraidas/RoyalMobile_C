@@ -17,6 +17,9 @@
             android:name=".product.ProductDetailsActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.OrderDetailsActivity"
             android:exported="false" />
         <activity

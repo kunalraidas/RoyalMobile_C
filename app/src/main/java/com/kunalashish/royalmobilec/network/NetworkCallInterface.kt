@@ -56,4 +56,9 @@ interface NetworkCallInterface {
     @POST("cart/update")
     fun updateCartQuantity(@Query("email") email : String,@Body p : Product,@Query("qty") qty : Int) : Call<Simple_Response>
 
+    @POST("cart/delete")
+    fun deleteCart(@Query("cart_id") id : Int) : Call<Simple_Response>
+
+    @POST("order/add")
+    fun addOrder(@Body cartList : CartList) : Call<Simple_Response>
 }

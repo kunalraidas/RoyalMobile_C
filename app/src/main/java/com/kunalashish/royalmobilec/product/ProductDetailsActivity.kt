@@ -1,11 +1,13 @@
 package com.kunalashish.royalmobilec.product
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.kunalashish.royalmobilec.R
+import com.kunalashish.royalmobilec.activity.CartActivity
 import com.kunalashish.royalmobilec.data.product.Product
 import com.kunalashish.royalmobilec.data.response.Simple_Response
 import com.kunalashish.royalmobilec.databinding.ActivityProductDetailsBinding
@@ -62,6 +64,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                                         "Added to cart",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    startActivity(Intent(this@ProductDetailsActivity,CartActivity::class.java))
                                 } else {
                                     Toast.makeText(
                                         this@ProductDetailsActivity,
@@ -101,6 +104,7 @@ class ProductDetailsActivity : AppCompatActivity() {
                                         "Added to cart",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    startActivity(Intent(this@ProductDetailsActivity,CartActivity::class.java))
                                 } else {
                                     Toast.makeText(
                                         this@ProductDetailsActivity,
