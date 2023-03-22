@@ -3,6 +3,7 @@ package com.kunalashish.royalmobilec.network
 import android.telecom.Call.Details
 import com.kunalashish.royalmobilec.data.model.Login_Request
 import com.kunalashish.royalmobilec.data.model.Register_Request
+import com.kunalashish.royalmobilec.data.models.Customer
 import com.kunalashish.royalmobilec.data.product.*
 import com.kunalashish.royalmobilec.data.response.Simple_Response
 import retrofit2.Call
@@ -36,6 +37,11 @@ interface NetworkCallInterface
 
     @GET("category/getAll")
     fun getCategory() : Call<List<Category>>
+
+    @GET("customer/get")
+    fun getCustomerDetails(@Query("email")email : String) : Call<Customer>
+
+
 
 
 }
