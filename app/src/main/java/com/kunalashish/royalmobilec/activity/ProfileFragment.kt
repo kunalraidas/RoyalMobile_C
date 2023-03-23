@@ -21,15 +21,19 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater,container,false)
         binding.settingsBtn.setOnClickListener {
+            // for Edit Profile
             val intent = Intent(activity, EditProfileActivity::class.java)
             startActivity(intent)
         }
         binding.btnSeeMore2.setOnClickListener {
+            // For cart
             val intent1 = Intent(activity, CartActivity::class.java)
             startActivity(intent1)
         }
+
         binding.btnSeeMore3.setOnClickListener {
-            val intent2 = Intent(activity, OrderDetailsActivity::class.java)
+            // for order
+            val intent2 = Intent(activity, order_item_activity::class.java)
             startActivity(intent2)
         }
          return  binding.root

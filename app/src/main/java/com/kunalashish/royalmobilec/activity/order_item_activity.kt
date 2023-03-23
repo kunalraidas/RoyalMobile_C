@@ -1,5 +1,6 @@
 package com.kunalashish.royalmobilec.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kunalashish.royalmobilec.databinding.ActivityOrderItemBinding
@@ -11,5 +12,8 @@ class order_item_activity : AppCompatActivity() {
         binding = ActivityOrderItemBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.imgCart.setOnClickListener {
+            startActivity(Intent(this, OrderDetailsActivity::class.java))
+        }
     }
 }
