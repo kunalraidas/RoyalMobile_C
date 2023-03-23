@@ -86,99 +86,121 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
        <androidx.appcompat.widget.LinearLayoutCompat
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical">
 
-           <TextView
-               android:layout_width="match_parent"
+           <ImageButton
+               android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:layout_marginTop="56dp"
-               android:fontFamily="@font/montserrat"
-               android:text="First Name  "
-               android:textSize="18sp"
-               android:textStyle="bold" />
+               android:src="@drawable/cart"
+               android:padding="5dp"/>
+<!--           <TextView-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_marginTop="56dp"-->
+<!--               android:fontFamily="@font/montserrat"-->
+<!--               android:text="First Name  "-->
+<!--               android:textSize="18sp"-->
+<!--               android:textStyle="bold" />-->
 
-           <EditText
-               android:id="@+id/editFirstName"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:inputType="textPersonName"
-               android:textSize="16sp" />
+<!--           <EditText-->
+<!--               android:id="@+id/editFirstName"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:inputType="textPersonName"-->
+<!--               android:textSize="16sp" />-->
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:fontFamily="@font/montserrat"
-               android:text="Last Name "
-               android:textSize="18sp"
-               android:textStyle="bold" />
+<!--           <TextView-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:fontFamily="@font/montserrat"-->
+<!--               android:text="Last Name "-->
+<!--               android:textSize="18sp"-->
+<!--               android:textStyle="bold" />-->
 
-           <EditText
-               android:id="@+id/editLastName"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:inputType="textPersonName"
-               android:textSize="16sp" />
+<!--           <EditText-->
+<!--               android:id="@+id/editLastName"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:inputType="textPersonName"-->
+<!--               android:textSize="16sp" />-->
 
+<!--           <TextView-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:fontFamily="@font/montserrat"-->
+<!--               android:text="Email  "-->
+<!--               android:textSize="18sp"-->
+<!--               android:textStyle="bold" />-->
 
+<!--           <EditText-->
+<!--               android:id="@+id/editEmailName"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:editable="false"-->
+<!--               android:textSize="16sp" />-->
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:fontFamily="@font/montserrat"
-               android:text="Phone Number  "
-               android:textSize="18sp"
-               android:textStyle="bold" />
+<!--           <TextView-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:fontFamily="@font/montserrat"-->
+<!--               android:text="Phone Number  "-->
+<!--               android:textSize="18sp"-->
+<!--               android:textStyle="bold" />-->
 
-           <EditText
-               android:id="@+id/editPhone"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Enter Your Phone Number..."
-               android:inputType="phone"
-               android:maxLength="10"
-               android:textSize="16sp" />
+<!--           <EditText-->
+<!--               android:id="@+id/editPhone"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:hint="Enter Your Phone Number..."-->
+<!--               android:inputType="phone"-->
+<!--               android:maxLength="10"-->
+<!--               android:textSize="16sp" />-->
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:fontFamily="@font/montserrat"
-               android:text="Address "
-               android:textSize="18sp"
-               android:textStyle="bold" />
+<!--           <TextView-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:fontFamily="@font/montserrat"-->
+<!--               android:text="Address "-->
+<!--               android:textSize="18sp"-->
+<!--               android:textStyle="bold" />-->
 
-           <EditText
+<!--           <EditText-->
 
-               android:id="@+id/editAddress"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="ex : Ahmedabad, India"
-               android:textSize="16sp" />
+<!--               android:id="@+id/editAddress"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:hint="ex : Ahmedabad, India"-->
+<!--               android:textSize="16sp" />-->
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:fontFamily="@font/montserrat"
-               android:text="Area PIN Code"
-               android:textSize="18sp"
-               android:textStyle="bold" />
+<!--           <TextView-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:fontFamily="@font/montserrat"-->
+<!--               android:text="Area PIN Code"-->
+<!--               android:textSize="18sp"-->
+<!--               android:textStyle="bold" />-->
 
-           <EditText
-               android:id="@+id/etPinCode"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Enter 6 Digit PIN Code"
-               android:inputType="number"
-               android:maxLength="6"
-               android:textSize="16sp" />
+<!--           <EditText-->
+<!--               android:id="@+id/etPinCode"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:hint="Enter 6 Digit PIN Code"-->
+<!--               android:inputType="number"-->
+<!--               android:maxLength="6"-->
+<!--               android:textSize="16sp" />-->
 
 
 
        </androidx.appcompat.widget.LinearLayoutCompat>
+
+   </ScrollView>
 
 
 </LinearLayout>
