@@ -50,7 +50,9 @@ class AllProductsAdapter(val c: Context, val l: List<Product>,val db : NetworkCa
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val i = l[position]
         with(holder){
-            Glide.with(c).load(Constant.urlMaker(i.productColor?.first()?.product_image!!)).into(imgProductImage)
+            Glide.with(c).load(
+                Constant.urlMaker(i.productColor?.first()?.product_image!!))
+                .into(imgProductImage)
             productName.text = i.product_name
             productPrice.text = i.Mobile?.first()?.price.toString()
             productCard.setOnClickListener {
