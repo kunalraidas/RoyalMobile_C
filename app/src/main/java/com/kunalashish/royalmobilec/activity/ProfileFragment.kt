@@ -19,21 +19,34 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-         binding = FragmentProfileBinding.inflate(inflater,container,false)
-
-  //      binding.userCardProfile.settingsBtn.setOnClickListener {
-   //         startActivity(intent)
-//            //startActivity(intent(this, EditProfileActivity::class.java))
-  //      }
-
-
-  //     binding.settingsBtn.setOnClickListener {
-//            val intent  = Intent(requireContext(),EditProfileActivity::class.java)
-//            startActivity(intent)
-//        }
-
-        return  binding.root
+        binding = FragmentProfileBinding.inflate(inflater,container,false)
+        binding.settingsBtn.setOnClickListener {
+            val intent = Intent(activity, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnSeeMore2.setOnClickListener {
+            val intent1 = Intent(activity, CartActivity::class.java)
+            startActivity(intent1)
+        }
+        binding.btnSeeMore3.setOnClickListener {
+            val intent2 = Intent(activity, OrderDetailsActivity::class.java)
+            startActivity(intent2)
+        }
+         return  binding.root
+//    binding.settingsBtn.setOnClickListener {
+//        startActivity(intent)
+//    }
     }
 
 
 }
+//      binding.userCardProfile.settingsBtn.setOnClickListener {
+//         startActivity(intent)
+//            //startActivity(intent(this, EditProfileActivity::class.java))
+//      }
+
+
+//     binding.settingsBtn.setOnClickListener {
+//            val intent  = Intent(requireContext(),EditProfileActivity::class.java)
+//            startActivity(intent)
+//        }
