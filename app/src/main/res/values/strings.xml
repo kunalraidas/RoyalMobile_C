@@ -58,5 +58,12 @@
     <string name="change_password">Change Password</string>
     <string name="password">Password</string>
     <string name="My_address">Parsuram Nagar,Nr.Rameshwar Mahadev,Meghani Nagar</string>
+    <string name="shipping_details">SHIPPING DETAILS</string>
+    <string name="change_or_add_a_new_address">Change or add a new address</string>
+    <string name="rs_49999">Rs.49999/-</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="order_now">Order Now</string>
+    <string name="raidas_kunal">Raidas Kunal</string>
+    <string name="_380016">380016</string>
 
 </resources>

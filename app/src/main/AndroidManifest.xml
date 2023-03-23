@@ -29,6 +29,9 @@
             android:name=".activity.EditProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MainActivity3"
             android:exported="false" />
         <activity

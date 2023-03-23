@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import com.kunalashish.royalmobilec.R
 import com.kunalashish.royalmobilec.adapter.AllProductsAdapter
 import com.kunalashish.royalmobilec.data.product.Product
@@ -34,6 +35,7 @@ class DashboardFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
         binding =   FragmentDashboardBinding.bind(view)
+       // val pagerAdapter = MyPagerAdapter(FragmentManager)
 
         loadProducts()
         return binding.root

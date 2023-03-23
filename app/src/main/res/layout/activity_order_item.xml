@@ -26,7 +26,8 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:src="@color/gray"
+                android:clickable="true"
+                android:src="@drawable/phone"
                 android:id="@+id/imgCart"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
