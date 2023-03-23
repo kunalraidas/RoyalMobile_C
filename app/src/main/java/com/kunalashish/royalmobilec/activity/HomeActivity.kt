@@ -1,4 +1,5 @@
 package com.kunalashish.royalmobilec.activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -51,7 +52,9 @@ class HomeActivity : AppCompatActivity() {
                   //  drawerLayout.closeDrawers()
                 }
                 R.id.Cart -> {
-                    replaceFragment(CartFragment())
+                    val intent = Intent(this@HomeActivity,CartActivity::class.java)
+                    startActivity(intent)
+                    //replaceFragment(CartFragment())
                    // drawerLayout.closeDrawers()
                 }
                 R.id.favourites -> {
