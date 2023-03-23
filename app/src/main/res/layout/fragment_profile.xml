@@ -1,38 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <include
-        android:id="@+id/layoutProfile"
-        layout="@layout/user_cards"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
-
-    <include
-        android:id="@+id/cvOrders"
-        layout="@layout/profile_cards"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/layoutProfile" />
+        android:layout_height="wrap_content">
 
-    <include
-        android:id="@+id/cvShippings"
-        layout="@layout/profile_cards"
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="0dp"
+            android:layout_height="230dp"
+            android:background="@color/teal_700"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:elevation="6dp"
+            android:src="@drawable/profile"
+            app:civ_border_color="@android:color/white"
+            app:civ_border_width="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout6"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout6" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/slider_background"
+            android:elevation="6dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Kunal"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="kunalkunal74433@gmail.com"
+                android:textAlignment="center"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/settings_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:tint="@color/primary_color"
+            app:backgroundTint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout7"
+            app:srcCompat="@drawable/setting" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/frame1"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/cvOrders" />
+        android:layout_height="wrap_content">
 
-    <include
-        android:id="@+id/cvNotifications"
-        layout="@layout/profile_cards"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/cvShippings" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp">
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orders"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="16dp"
+                android:textSize="18sp"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSeeMore"
+                android:layout_width="28dp"
+                android:layout_height="36dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow" />
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:fontFamily="@font/montserrat"
         android:textStyle="bold"
@@ -42,10 +126,37 @@
         android:layout_margin="10dp"
         android:id="@+id/btnLogout"
         android:background="@color/buttoncolor"
-
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/cvNotifications"
+        android:layout_gravity="bottom"
+        app:layout_constraintTop_toBottomOf="@id/frame1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+    <!--    <include-->
+    <!--        android:id="@+id/user_card_Profile"-->
+    <!--        layout="@layout/user_cards"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_width="match_parent"/>-->
+
+    <!--    <include-->
+    <!--        android:id="@+id/cvOrders"-->
+    <!--        layout="@layout/profile_cards"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/user_card_Profile" />-->
+
+    <!--    <include-->
+    <!--        android:id="@+id/cvShippings"-->
+    <!--        layout="@layout/profile_cards"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/cvOrders" />-->
+
+    <!--    <include-->
+    <!--        android:id="@+id/cvNotifications"-->
+    <!--        layout="@layout/profile_cards"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/cvShippings" />-->

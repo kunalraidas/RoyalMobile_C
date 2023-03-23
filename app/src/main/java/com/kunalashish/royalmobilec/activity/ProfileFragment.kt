@@ -13,6 +13,7 @@ import com.kunalashish.royalmobilec.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     lateinit var binding : FragmentProfileBinding
+//    val intent = Intent(activity, EditProfileActivity::class.java)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,10 +21,16 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
          binding = FragmentProfileBinding.inflate(inflater,container,false)
 
-        binding.settingsBtn.setOnClickListener {
-            val intent  = Intent(requireContext(),EditProfileActivity::class.java)
-            startActivity(intent)
-        }
+  //      binding.userCardProfile.settingsBtn.setOnClickListener {
+   //         startActivity(intent)
+//            //startActivity(intent(this, EditProfileActivity::class.java))
+  //      }
+
+
+  //     binding.settingsBtn.setOnClickListener {
+//            val intent  = Intent(requireContext(),EditProfileActivity::class.java)
+//            startActivity(intent)
+//        }
 
         return  binding.root
     }

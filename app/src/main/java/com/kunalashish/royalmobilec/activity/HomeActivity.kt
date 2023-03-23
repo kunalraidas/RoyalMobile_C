@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.kunalashish.royalmobilec.R
 import com.kunalashish.royalmobilec.ResetPassword
+import com.kunalashish.royalmobilec.adapter.MainViewPagerAdapter
 import com.kunalashish.royalmobilec.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -22,10 +23,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         replaceFragment(DashboardFragment())
+        setupViewPager()
 
 
         binding.NavigationView.setNavigationItemSelectedListener {
-            if (previousItem != null){
+            if (previousItem != null) {
                 previousItem?.isChecked = false
             }
 
@@ -45,26 +47,26 @@ class HomeActivity : AppCompatActivity() {
                     //drawerLayout.closeDrawers()
                 }
                 R.id.rewards -> {
-                   // replaceFragment()
+                    // replaceFragment()
                     replaceFragment(RewardsFragment())
-                   // drawerLayout.closeDrawers()
+                    // drawerLayout.closeDrawers()
                 }
                 R.id.order -> {
                     replaceFragment(OrderFragment())
-                  //  drawerLayout.closeDrawers()
+                    //  drawerLayout.closeDrawers()
                 }
                 R.id.Cart -> {
                     replaceFragment(CartFragment())
                     //replaceFragment(CartFragment())
-                   // drawerLayout.closeDrawers()
+                    // drawerLayout.closeDrawers()
                 }
                 R.id.favourites -> {
                     replaceFragment(FavouritrsFragment())
-                  //  drawerLayout.closeDrawers()
+                    //  drawerLayout.closeDrawers()
                 }
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
-                   // drawerLayout.closeDrawers()
+                    // drawerLayout.closeDrawers()
                 }
             }
             return@setNavigationItemSelectedListener true
@@ -82,5 +84,11 @@ class HomeActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame, fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun setupViewPager() {
+        val flist = listOf(DashboardFragment(), CartFragment(), ProfileFragment())
+        binding.viewPager.adapter = MainViewPagerAdapter(flist, this@HomeActivity)
+        binding.bottomNavigationView.setupWithViewPager2(binding.viewPager)
     }
 }
