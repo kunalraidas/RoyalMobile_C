@@ -5,6 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.google.android.material.navigation.NavigationView
 import com.kunalashish.royalmobilec.R
 import com.kunalashish.royalmobilec.ResetPassword
 import com.kunalashish.royalmobilec.databinding.ActivityHomeBinding
@@ -21,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         replaceFragment(DashboardFragment())
+
 
         binding.NavigationView.setNavigationItemSelectedListener {
             if (previousItem != null){
@@ -52,8 +54,7 @@ class HomeActivity : AppCompatActivity() {
                   //  drawerLayout.closeDrawers()
                 }
                 R.id.Cart -> {
-                    val intent = Intent(this@HomeActivity,CartActivity::class.java)
-                    startActivity(intent)
+                    replaceFragment(CartFragment())
                     //replaceFragment(CartFragment())
                    // drawerLayout.closeDrawers()
                 }

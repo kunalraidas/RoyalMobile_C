@@ -12,23 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-            android:elevation="0dp">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="Royal_Mobile"
-        app:menu="@menu/search_icon"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/primary_color"
-        app:layout_scrollFlags="scroll|enterAlways"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -43,21 +26,38 @@
 
         <FrameLayout
             android:id="@+id/frame"
-            android:layout_marginTop="56dp"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginBottom="56dp">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+                android:elevation="0dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Royal_Mobile"
+                    app:menu="@menu/search_icon"
+                    android:minHeight="?attr/actionBarSize"
+                    android:background="@color/primary_color"
+                    app:layout_scrollFlags="scroll|enterAlways"/>
+
+            </com.google.android.material.appbar.AppBarLayout>
         </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     
     <com.google.android.material.navigation.NavigationView
+        android:visibility="gone"
         android:id="@+id/NavigationView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/menu_drawer"
-        android:layout_gravity="start"/>
+        app:menu="@menu/menu_drawer" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
