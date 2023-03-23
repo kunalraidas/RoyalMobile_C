@@ -1,30 +1,36 @@
 package com.kunalashish.royalmobilec.activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.google.android.material.navigation.NavigationView
 import com.kunalashish.royalmobilec.R
+import com.kunalashish.royalmobilec.ResetPassword
+import com.kunalashish.royalmobilec.adapter.MainViewPagerAdapter
 import com.kunalashish.royalmobilec.databinding.ActivityHomeBinding
-
-
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityHomeBinding
+    private lateinit var drawerLayout: DrawerLayout
+    var previousItem: MenuItem? = null
 
-    private lateinit var binding : ActivityHomeBinding
-    private  var previousItem: MenuItem? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         replaceFragment(DashboardFragment())
+        setupViewPager()
 
-        binding.bottomNavigation.setOnItemSelectedListener{
-           if(previousItem != null){
-               previousItem?.isChecked = false
-           }
+
+        binding.NavigationView.setNavigationItemSelectedListener {
+            if (previousItem != null) {
+                previousItem?.isChecked = false
+            }
+
             it.isCheckable = true
             it.isChecked = true
             previousItem = it
@@ -63,55 +69,9 @@ class HomeActivity : AppCompatActivity() {
                     // drawerLayout.closeDrawers()
                 }
             }
-             true
-            // this code is not work it show error so i use only true
-           // return@setNavigationItemSelectedListener true
+            return@setNavigationItemSelectedListener true
         }
     }
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame, fragment)
-        fragmentTransaction.commit()
-    }
-}
-
-// return@setNavigationItemSelectedListener true
-//                R.id.notification -> {
-//                    replaceFragment(NotificationFragment())
-//                    //drawerLayout.closeDrawers()
-//                }
-//                R.id.rewards -> {
-//                    // replaceFragment()
-//                    replaceFragment(RewardsFragment())
-//                    // drawerLayout.closeDrawers()
-//                }
-//                R.id.order -> {
-//                    replaceFragment(OrderFragment())
-//                    //  drawerLayout.closeDrawers()
-//                }
-//                R.id.Cart -> {
-//                    replaceFragment(CartFragment())
-//                    //replaceFragment(CartFragment())
-//                    // drawerLayout.closeDrawers()
-//                }
-
-
-
-
-//        binding.NavigationView.setNavigationItemSelectedListener {
-//            if (previousItem != null) {
-//                previousItem?.isChecked = false
-//            }
-//
-//            it.isCheckable = true
-//            it.isChecked = true
-//            previousItem = it
-//
-//                return@setNavigationItemSelectedListener
-//
-//        }
-
     /* @SuppressLint("RestrictedApi")
    fun setUpToolbar(toolbar: Toolbar){
        setSupportActionBar(toolbar)
@@ -119,12 +79,16 @@ class HomeActivity : AppCompatActivity() {
        supportActionBar?.setHomeButtonEnabled(true)
    }*/
 
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame, fragment)
+        fragmentTransaction.commit()
+    }
 
-
-//binding = ActivityMainBinding.inflate(layoutInflater)
-//
-//setContentView(binding.root)
-//
-
-//}
-
+    private fun setupViewPager() {
+        val flist = listOf(DashboardFragment(), CartFragment(), ProfileFragment())
+        binding.viewPager.adapter = MainViewPagerAdapter(flist, this@HomeActivity)
+        binding.bottomNavigationView.setupWithViewPager2(binding.viewPager)
+    }
+}
