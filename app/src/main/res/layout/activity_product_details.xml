@@ -145,6 +145,7 @@
             app:layout_constraintVertical_bias="0.555" />
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/redemption_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -185,6 +186,7 @@
             app:layout_constraintTop_toBottomOf="@id/redemption_layout"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Hii Helo"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

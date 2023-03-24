@@ -26,8 +26,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         isLoggedIn()
-//        startActivity(Intent(this,HomeActivity::class.java))
-//        finish()
+        startActivity(Intent(this,HomeActivity::class.java))
+        finish()
 
         binding.btnLogin.setOnClickListener {
             validateCustomer()
@@ -65,7 +65,6 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
     private fun validateCustomer() {
         val email = binding.edtEmail.text.toString()
         val password = binding.edtPassword.text.toString()
@@ -90,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
                         s.putString(user_login,email)
                         s.apply()
                         Toast.makeText(this@LoginActivity,"Login successfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity,MainActivity::class.java))
+                        startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
                         finish()
                     }
                     else

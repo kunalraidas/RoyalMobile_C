@@ -61,4 +61,7 @@ interface NetworkCallInterface {
 
     @POST("order/add")
     fun addOrder(@Body cartList : CartList) : Call<Simple_Response>
+
+    @GET("order/get_email_order")
+    fun getOrderByEmail(@Query("email")email: String) : Call<List<Order>>
 }
