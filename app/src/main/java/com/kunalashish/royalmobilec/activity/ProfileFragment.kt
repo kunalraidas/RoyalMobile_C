@@ -13,7 +13,6 @@ import com.kunalashish.royalmobilec.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     lateinit var binding : FragmentProfileBinding
-//    val intent = Intent(activity, EditProfileActivity::class.java)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,27 +29,24 @@ class ProfileFragment : Fragment() {
             val intent1 = Intent(activity, CartActivity::class.java)
             startActivity(intent1)
         }
-
         binding.btnSeeMore3.setOnClickListener {
             // for order
             val intent2 = Intent(activity, order_item_activity::class.java)
             startActivity(intent2)
         }
          return  binding.root
-//    binding.settingsBtn.setOnClickListener {
-//        startActivity(intent)
-//    }
+        }
+
+    override fun onPause() {
+        super.onPause()
+       // binding.root.removeAllViews()
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+       // binding.root.removeAllViews()
+    }
 }
-//      binding.userCardProfile.settingsBtn.setOnClickListener {
-//         startActivity(intent)
-//            //startActivity(intent(this, EditProfileActivity::class.java))
-//      }
 
 
-//     binding.settingsBtn.setOnClickListener {
-//            val intent  = Intent(requireContext(),EditProfileActivity::class.java)
-//            startActivity(intent)
-//        }
+

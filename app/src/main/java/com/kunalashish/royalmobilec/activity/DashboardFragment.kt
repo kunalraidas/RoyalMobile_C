@@ -33,13 +33,14 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View?{
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        binding =   FragmentDashboardBinding.bind(view)
+      //  val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        binding =   FragmentDashboardBinding.inflate(inflater,container,false)
        // val pagerAdapter = MyPagerAdapter(FragmentManager)
 
         loadProducts()
         return binding.root
     }
+
 
     private fun loadProducts() {
         val r = db.getAllProduct()
@@ -61,5 +62,11 @@ class DashboardFragment : Fragment() {
         })
     }
 
+    override fun onPause() {
+        super.onPause()
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 
 }

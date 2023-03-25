@@ -13,6 +13,24 @@
         android:layout_height="match_parent">
 
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+            android:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Royal_Mobile"
+                app:menu="@menu/search_icon"
+                android:minHeight="?attr/actionBarSize"
+                android:background="@color/primary_color"
+                app:layout_scrollFlags="scroll|enterAlways"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
 
 
 <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
@@ -32,23 +50,7 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="56dp">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-                android:elevation="0dp">
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:title="Royal_Mobile"
-                    app:menu="@menu/search_icon"
-                    android:minHeight="?attr/actionBarSize"
-                    android:background="@color/primary_color"
-                    app:layout_scrollFlags="scroll|enterAlways"/>
-
-            </com.google.android.material.appbar.AppBarLayout>
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +58,7 @@
             android:layout_height="match_parent">
 
             <androidx.viewpager2.widget.ViewPager2
+                android:background="@color/white"
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

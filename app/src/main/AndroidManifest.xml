@@ -14,7 +14,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".product.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.Forgot_password_Activity"
             android:exported="false" />
         <activity
             android:name=".activity.order_item_activity"
