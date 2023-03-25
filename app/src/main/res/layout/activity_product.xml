@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/constraint1"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:elevation="3dp"
-    android:background="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:elevation="3dp"
+    tools:context=".activity.ProductActivity">
 
     <ImageView
         android:id="@+id/product_images_viewpager"
@@ -173,28 +172,6 @@
             android:textSize="12sp" />
 
     </LinearLayout>
-    <TextView
-    android:id="@+id/txtProductDescription"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="10dp"
-    app:layout_constraintTop_toBottomOf="@id/redemption_layout"
-    app:layout_constraintStart_toStartOf="parent"
-    android:text="Hi Hello"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
-
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btnAddToCart"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="8dp"-->
-<!--        android:backgroundTint="@color/purple_700"-->
-<!--        android:text="Add To Cart"-->
-<!--        android:textAllCaps="false"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/txtProductDescription"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/txtProductDescription"-->
-<!--        app:layout_constraintHorizontal_bias="0.666"-->
-<!--        app:layout_constraintStart_toStartOf="@id/txtProductDescription" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
