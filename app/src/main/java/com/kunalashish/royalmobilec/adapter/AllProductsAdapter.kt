@@ -1,6 +1,7 @@
 package com.kunalashish.royalmobilec.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -12,6 +13,7 @@ import com.kunalashish.royalmobilec.data.product.Product
 import com.kunalashish.royalmobilec.databinding.HorizontalScrollItemLayoutBinding
 import com.kunalashish.royalmobilec.network.NetworkCallInterface
 import com.kunalashish.royalmobilec.network.NetworkService
+import com.kunalashish.royalmobilec.product.ProductDetailsActivity
 import com.kunalashish.royalmobilec.utils.Constant
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,17 +50,23 @@ class AllProductsAdapter(val c: Context, val l: List<Product>,val db : NetworkCa
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val i = l[position]
         with(holder){
-            Glide.with(c).load(Constant.urlMaker(i.productColor?.first()?.product_image!!)).into(imgProductImage)
+            Glide.with(c).load(
+                Constant.urlMaker(i.productColor?.first()?.product_image!!))
+                .into(imgProductImage)
             productName.text = i.product_name
             productPrice.text = i.Mobile?.first()?.price.toString()
             productCard.setOnClickListener {
-                Toast.makeText(c,"$i",Toast.LENGTH_LONG).show()
+                val intS = Intent(c,ProductDetailsActivity::class.java)
+                intS.putExtra("product",i)
+                c.startActivity(intS)
             }
             getCatById(i.cate_id!!){
                 productCategory.text = it
             }
             imgProductImage.setOnClickListener {
-                Toast.makeText(c,"$i",Toast.LENGTH_LONG).show()
+                val intS = Intent(c,ProductDetailsActivity::class.java)
+                intS.putExtra("product",i)
+                c.startActivity(intS)
             }
         }
     }

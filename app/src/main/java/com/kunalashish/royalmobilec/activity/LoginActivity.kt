@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         customerEmail = sharedPreferences.getString(user_login,null)
         if (!customerEmail.isNullOrEmpty())
         {
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this,MainActivity::class.java))
             finish()
         }
     }
@@ -90,7 +90,7 @@ class LoginActivity : AppCompatActivity() {
                         s.putString(user_login,email)
                         s.apply()
                         Toast.makeText(this@LoginActivity,"Login successfully", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+                        startActivity(Intent(this@LoginActivity,MainActivity::class.java))
                         finish()
                     }
                     else
