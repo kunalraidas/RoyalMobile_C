@@ -1,6 +1,5 @@
 package com.kunalashish.royalmobilec.network
 
-import android.telecom.Call.Details
 import com.kunalashish.royalmobilec.data.model.Login_Request
 import com.kunalashish.royalmobilec.data.model.Register_Request
 import com.kunalashish.royalmobilec.data.models.Customer
@@ -51,7 +50,7 @@ interface NetworkCallInterface {
     ) : Call<Simple_Response>
 
     @GET("cart/get_cart_by_email")
-    fun getCartById(@Query("email") email : String) : Call<List<Cart>>
+    fun getCartByEmail(@Query("email") email : String) : Call<List<Cart>>
 
     @POST("cart/update")
     fun updateCartQuantity(@Query("email") email : String,@Body p : Product,@Query("qty") qty : Int) : Call<Simple_Response>
@@ -62,6 +61,12 @@ interface NetworkCallInterface {
     @POST("order/add")
     fun addOrder(@Body cartList : CartList) : Call<Simple_Response>
 
+    @POST("order/id")
+    fun getOrderById(@Query("id") orderId : String) : Call<Order>
+
     @GET("order/get_email_order")
     fun getOrderByEmail(@Query("email")email: String) : Call<List<Order>>
+
+    @POST("order/id")
+    fun getOrderByOrderId(@Query("id")orderId : String) : Call<Order>
 }

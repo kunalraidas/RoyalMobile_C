@@ -11,7 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#D8D4D4"
         tools:context=".activity.OrderActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderToolbar"
+            app:title="Order"
+            android:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/errorMessageForOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This is a order activity"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -19,7 +37,7 @@
             android:layout_height="match_parent"
             android:id="@+id/recycleOrder"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/order_item_new_layout" />
+            tools:listitem="@layout/order_items" />
 
     </LinearLayout>
 </layout>

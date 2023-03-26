@@ -48,7 +48,7 @@ class ProfileFragment : Fragment() {
 
         binding.btnSeeMore3.setOnClickListener {
             // for order
-            val intent2 = Intent(activity, order_item_activity::class.java)
+            val intent2 = Intent(activity,OrderActivity::class.java)
             startActivity(intent2)
         }
 

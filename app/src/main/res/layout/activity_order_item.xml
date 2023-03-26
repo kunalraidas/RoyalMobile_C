@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.order_item_activity">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <androidx.recyclerview.widget.RecyclerView
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/allOrderActivity"/>
+        tools:context=".activity.order_item_activity">
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/allOrderActivity"
+            tools:listitem="@layout/order_item_new_layout" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>

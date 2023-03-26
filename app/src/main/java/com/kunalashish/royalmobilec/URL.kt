@@ -1,7 +1,7 @@
 package com.kunalashish.royalmobilec
 
 object URL {
-    const val BASE_URL = "https://947c-42-105-164-154.in.ngrok.io"
+    const val BASE_URL = "https://0e76-103-161-98-144.in.ngrok.io"
     const val IMAGE_PATH = "$BASE_URL/storage/images/"
 }
 

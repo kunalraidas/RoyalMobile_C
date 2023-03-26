@@ -17,10 +17,6 @@ import com.kunalashish.royalmobilec.viewmodels.OrderViewModel
 class OrderAdapter(val context: Context, val l: List<Order?>, val vm: OrderViewModel):
     RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
     class OrderViewHolder(val binding: OrderItemNewLayoutBinding) : ViewHolder(binding.root) {
-//        val productImage = binding.productImage
-//        val productName = binding.productTitle
-//        val productPrice = binding.productPrice
-//        val productQuentity = binding.productQuantity
 
         val productImage = binding.imgOrder
         val productName  = binding.txtOrderItemProductName
@@ -56,12 +52,8 @@ class OrderAdapter(val context: Context, val l: List<Order?>, val vm: OrderViewM
 
             }
 
+    }
 
-//                            productName.text = p?.Cart?.first()?.product?.product_name
-//                           productPrice.text = p?.Cart?.first()?.total_price.toString()
-//                              productQuentity.text = p?.Cart?.first()?.quentity.toString()
-
-            }
     }
 
 
