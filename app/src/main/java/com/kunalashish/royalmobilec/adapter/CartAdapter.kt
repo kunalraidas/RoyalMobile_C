@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
