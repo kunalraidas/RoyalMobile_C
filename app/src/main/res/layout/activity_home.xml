@@ -9,27 +9,10 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorlayout"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-            android:elevation="0dp">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="Royal_Mobile"
-                app:menu="@menu/search_icon"
-                android:minHeight="?attr/actionBarSize"
-                android:background="@color/primary_color"
-                app:layout_scrollFlags="scroll|enterAlways"/>
-
-        </com.google.android.material.appbar.AppBarLayout>
 
 
 
@@ -50,10 +33,27 @@
             android:layout_height="fill_parent"
             android:layout_marginBottom="56dp">
 
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+                android:elevation="0dp">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="Royal_Mobile"
+                    app:menu="@menu/search_icon"
+                    android:minHeight="?attr/actionBarSize"
+                    android:background="@color/primary_color"
+                    app:layout_scrollFlags="scroll|enterAlways"/>
+
+            </com.google.android.material.appbar.AppBarLayout>
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -69,7 +69,7 @@
 
             <nl.joery.animatedbottombar.AnimatedBottomBar
                 android:id="@+id/bottomNavigationView"
-                app:layout_constraintTop_toBottomOf="@id/frame"
+                app:layout_constraintTop_toBottomOf="@id/viewPager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -84,8 +84,7 @@
                 app:abb_indicatorMargin="24dp"
                 app:abb_tabs="@menu/buttom_item"
                 app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
-                app:abb_selectedIndex="0"
-                tools:ignore="NotSibling" />
+                app:abb_selectedIndex="0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
