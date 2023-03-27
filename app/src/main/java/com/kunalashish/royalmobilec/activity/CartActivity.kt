@@ -1,6 +1,7 @@
 package com.kunalashish.royalmobilec.activity
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -38,6 +39,8 @@ class CartActivity : AppCompatActivity() {
         binding.btnOrderNow.setOnClickListener {
             val c = CartList(vm.carts.value!!)
             vm.addOrder(c)
+//            val intent = Intent(this@CartActivity,order_item_activity::class.java)
+//            startActivity(intent)
         }
     }
 

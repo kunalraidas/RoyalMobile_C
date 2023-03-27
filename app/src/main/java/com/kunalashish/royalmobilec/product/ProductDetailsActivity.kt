@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.kunalashish.royalmobilec.R
 import com.kunalashish.royalmobilec.activity.CartActivity
 import com.kunalashish.royalmobilec.data.product.Product
 import com.kunalashish.royalmobilec.data.response.Simple_Response
@@ -134,7 +133,8 @@ class ProductDetailsActivity : AppCompatActivity() {
     private fun setupData() {
         if (product != null) {
             with(binding) {
-                txtProductDescription.text = product!!.product_desc
+//                txtProductDescription.text = product!!.product_desc
+                txtProductDescription.setText(product!!.product_desc)
                 Glide.with(this@ProductDetailsActivity)
                     .load(product?.productColor?.first()?.product_image?.let {
                         Constant.urlMaker(

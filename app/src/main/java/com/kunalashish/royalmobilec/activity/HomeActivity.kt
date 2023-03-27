@@ -70,6 +70,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             return@setNavigationItemSelectedListener true
+            //binding.bottomNavigationView.setupWithNavController(B)
         }
     }
     /* @SuppressLint("RestrictedApi")

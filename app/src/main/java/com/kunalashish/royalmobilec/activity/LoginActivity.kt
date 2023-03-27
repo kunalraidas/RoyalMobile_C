@@ -26,8 +26,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         isLoggedIn()
-//        startActivity(Intent(this,HomeActivity::class.java))
-//        finish()
+        startActivity(Intent(this,HomeActivity::class.java))
+        finish()
 
         binding.btnLogin.setOnClickListener {
             validateCustomer()
@@ -62,7 +62,6 @@ class LoginActivity : AppCompatActivity() {
         return passwordRegex.matches(password)
 
     }
-
 
 
 
