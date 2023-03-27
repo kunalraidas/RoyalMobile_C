@@ -87,7 +87,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        val flist = listOf(DashboardFragment(), CartFragment(), ProfileFragment())
+        val flist = listOf(DashboardFragment(),FavouritrsFragment(), ProfileFragment())
         binding.viewPager.adapter = MainViewPagerAdapter(flist, this@HomeActivity)
         binding.bottomNavigationView.setupWithViewPager2(binding.viewPager)
     }

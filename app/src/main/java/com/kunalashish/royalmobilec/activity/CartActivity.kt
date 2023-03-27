@@ -1,26 +1,33 @@
 package com.kunalashish.royalmobilec.activity
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.kunalashish.royalmobilec.adapter.CartAdapter
-import com.kunalashish.royalmobilec.data.product.Cart
+import com.kunalashish.royalmobilec.data.models.Customer
 import com.kunalashish.royalmobilec.data.product.CartList
 import com.kunalashish.royalmobilec.databinding.ActivityCartBinding
+import com.kunalashish.royalmobilec.network.NetworkService
 import com.kunalashish.royalmobilec.utils.Constant
 import com.kunalashish.royalmobilec.viewmodels.CartViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CartActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityCartBinding
+    var customerEmail : String ? = null
     lateinit var vm : CartViewModel
     var email: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCartBinding.inflate(layoutInflater)
+
+        getCustomer()
+
         vm = ViewModelProvider(this).get(CartViewModel::class.java)
 
         val sharedPreferences = getSharedPreferences(Constant.user_pref, Context.MODE_PRIVATE)
@@ -32,6 +39,9 @@ class CartActivity : AppCompatActivity() {
         }
         setupObservers()
         setupClickListeners()
+       // getCustomerDetails()
+
+        isLoggedIn()
         setContentView(binding.root)
     }
 
@@ -58,5 +68,34 @@ class CartActivity : AppCompatActivity() {
         vm.msg.observe(this){
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
+    }
+    companion object{
+        val db = NetworkService.networkInstance
+    }
+
+    private fun getCustomer(){
+        val b = customerEmail?.let {
+            db.getCustomerDetails(it)
+                .enqueue(object : Callback<Customer?> {
+                    override fun onResponse(call: Call<Customer?>, response: Response<Customer?>) {
+                        binding.CustomerName.text = response.body()?.first_name
+                        binding.address.text = response.body()?.delivery_address
+                        binding.pincode.text = response.body()?.pincode.toString()
+                    }
+                    override fun onFailure(call: Call<Customer?>, t: Throwable) {
+                        Toast.makeText(this@CartActivity, "Some Problem $t", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+    }
+
+    private fun isLoggedIn(): String? {
+        val sharedPreferences = getSharedPreferences(Constant.user_pref, Context.MODE_PRIVATE)
+        customerEmail = sharedPreferences.getString(Constant.user_login,null)
+        if (!customerEmail.isNullOrEmpty())
+        {
+            return customerEmail
+        }
+        return null
     }
 }

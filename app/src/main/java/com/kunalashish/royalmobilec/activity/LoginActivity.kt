@@ -26,8 +26,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         isLoggedIn()
-        startActivity(Intent(this,HomeActivity::class.java))
-        finish()
 
         binding.btnLogin.setOnClickListener {
             validateCustomer()
@@ -47,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         customerEmail = sharedPreferences.getString(user_login,null)
         if (!customerEmail.isNullOrEmpty())
         {
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,HomeActivity::class.java))
             finish()
         }
     }
