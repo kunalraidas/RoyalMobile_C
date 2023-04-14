@@ -29,10 +29,10 @@
 <!--            android:layout_marginBottom="-9dp"-->
 <!--            android:src="@drawable/mobile_banner1" />-->
 
-        <include layout="@layout/strip_ad_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+<!--        <include layout="@layout/strip_ad_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:app="http://schemas.android.com/apk/res-auto"
