@@ -179,20 +179,7 @@
                 android:background="@drawable/ic_arrow" />
         </androidx.cardview.widget.CardView>
     </FrameLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:fontFamily="@font/montserrat"
-        android:textStyle="bold"
-        android:text="Logout"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:layout_margin="10dp"
-        android:id="@+id/btLogout"
-        android:background="@color/buttoncolor"
-        android:textSize="18sp"
-        android:layout_gravity="bottom"
-        app:layout_constraintTop_toBottomOf="@id/frame3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
 

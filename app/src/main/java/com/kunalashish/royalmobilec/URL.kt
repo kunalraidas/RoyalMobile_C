@@ -5,6 +5,4 @@ object URL {
     const val IMAGE_PATH = "$BASE_URL/storage/images/"
 }
 
-//http://192.168.111.147:8007
 
-//
