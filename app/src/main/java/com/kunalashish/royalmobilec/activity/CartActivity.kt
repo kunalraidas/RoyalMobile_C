@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.kunalashish.royalmobilec.adapter.CartAdapter
 import com.kunalashish.royalmobilec.data.models.Customer
@@ -47,8 +48,20 @@ class CartActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnOrderNow.setOnClickListener {
-            val c = CartList(vm.carts.value!!)
-            vm.addOrder(c)
+
+            val b = AlertDialog.Builder(this)
+
+            b.setTitle("Confirm order ")
+            b.setMessage("Click yes to confirm ")
+            b.setPositiveButton("Yes"){d,w ->
+                val c = CartList(vm.carts.value!!)
+                vm.addOrder(c)
+            }
+            b.setNegativeButton("No"){d,w ->
+                Toast.makeText(this@CartActivity, "Order canceled", Toast.LENGTH_SHORT).show()
+                d.dismiss()
+            }
+            b.show()
 //            val intent = Intent(this@CartActivity,order_item_activity::class.java)
 //            startActivity(intent)
         }

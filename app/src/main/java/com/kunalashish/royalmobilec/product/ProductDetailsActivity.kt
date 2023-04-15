@@ -4,10 +4,17 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.kunalashish.royalmobilec.activity.CartActivity
+import com.kunalashish.royalmobilec.data.product.Mobile
 import com.kunalashish.royalmobilec.data.product.Product
+import com.kunalashish.royalmobilec.data.product.ProductColor
 import com.kunalashish.royalmobilec.data.response.Simple_Response
 import com.kunalashish.royalmobilec.databinding.ActivityProductDetailsBinding
 import com.kunalashish.royalmobilec.network.NetworkService
@@ -22,6 +29,10 @@ class ProductDetailsActivity : AppCompatActivity() {
     lateinit var binding: ActivityProductDetailsBinding
     var product: Product? = null
     var email: String? = null
+
+    var mMobile = mutableListOf<Mobile>()
+    var mColor = mutableListOf<ProductColor>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +46,62 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         setupData()
         setupClickListeners()
+        setupSpinnerSelection()
         setContentView(binding.root)
+    }
+
+    private fun setupSpinnerSelection() {
+        binding.mobileRam.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                var ramId = 0
+                var text = ""
+                if(!mMobile.isNullOrEmpty()){
+                    text = (view as TextView).text.toString()
+                    ramId = mMobile.filter {
+                        it.ram == text
+                    }.map {
+                        it.mobile_id
+                    }.first()
+                }
+                Toast.makeText(this@ProductDetailsActivity, "$text $ramId", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
+
+        binding.mobileStorage.onItemSelectedListener = object : OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                var storageId = 0
+                var text = ""
+                if(!mMobile.isNullOrEmpty()){
+                    text = (view as TextView).text.toString()
+                    storageId = mMobile.filter {
+                        it.storage == text
+                    }.map {
+                        it.mobile_id
+                    }.first()
+                }
+                Toast.makeText(this@ProductDetailsActivity, "$text $storageId", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
     }
 
     private fun setupClickListeners() {
@@ -43,11 +109,28 @@ class ProductDetailsActivity : AppCompatActivity() {
             if (product != null && email != null) {
                 //add mobile
                 if (!product!!.Mobile.isNullOrEmpty() && !product!!.productColor.isNullOrEmpty()) {
+
+
+                    val mId = mMobile.filter {
+                        val view = binding.mobileRam.selectedView as TextView
+                        it.ram == view.text.toString()
+                    }.map {
+                        it.mobile_id
+                    }.first()
+
+                    val cId = mColor.filter {
+                        val view = binding.mobileColor.selectedView as TextView
+                        it.color_name == view.text
+                    }.map {
+                        it.color_id
+                    }.first()
+
+
                     val r = NetworkService.networkInstance.addToCart(
                         email = email!!,
                         qty = 1,
-                        mid = product!!.Mobile!!.first().mobile_id,
-                        cid = product!!.productColor!!.first().color_id,
+                        mid = mId,
+                        cid = cId,
                         asid = null,
                         product = product!!
                     )
@@ -83,11 +166,21 @@ class ProductDetailsActivity : AppCompatActivity() {
                         }
                     })
                 } else if (!product!!.Accessories.isNullOrEmpty() && !product!!.productColor.isNullOrEmpty()) {
+
+                    val cId = mColor.filter {
+                        val view = binding.AccesssColor.selectedView as TextView
+                        it.color_name == view.text
+                    }.map {
+                        it.color_id
+                    }.first()
+
+
+
                     val r = NetworkService.networkInstance.addToCart(
                         email = email!!,
                         qty = 1,
                         mid = null,
-                        cid = product!!.productColor!!.first().color_id,
+                        cid =cId,
                         asid = product!!.Accessories!!.first().access_id,
                         product = product!!
                     )
@@ -143,8 +236,64 @@ class ProductDetailsActivity : AppCompatActivity() {
                     }).into(binding.productImagesViewpager)
                 productTitle.text = product?.product_name.toString()
                 productPrice.text = product?.Mobile?.first()?.price.toString()
+                if(!product?.Mobile.isNullOrEmpty()){
+                    binding.llMobile.visibility = View.VISIBLE
+                    loadMobileSpinners(product!!.Mobile,product!!.productColor)
+                }else{
+                    binding.llMobile.visibility = View.GONE
+                }
+
+                if(!product!!.Accessories.isNullOrEmpty()){
+                    binding.llAccess.visibility = View.VISIBLE
+                    loadAccessSpinners(product!!)
+                }else{
+                    binding.llAccess.visibility = View.GONE
+                }
+
 
             }
         }
+    }
+
+    private fun loadAccessSpinners(product: Product) {
+        val color = product.productColor?.sortedBy {
+            it.color_id
+
+        }
+        val adpAsc = color?.let {
+            ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, it.map {
+                it.color_name.toString()
+            })
+        }
+        binding.AccesssColor.adapter = adpAsc
+    }
+
+    private fun loadMobileSpinners(mobile: List<Mobile>?, productColor: List<ProductColor>?) {
+        val l = mobile!!.sortedBy {
+            it.mobile_id
+        }
+        mMobile = l.toMutableList()
+        val adpRam = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,l.map {
+            it.ram.toString()
+        })
+        binding.mobileRam.adapter = adpRam
+
+        val adpStorage =  ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,l.map {
+            it.storage.toString()
+        })
+
+        binding.mobileStorage.adapter = adpStorage
+
+        val color = productColor!!.sortedBy {
+            it.color_id
+        }
+        val adpColor = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,color.map {
+            it.color_name
+        })
+
+        mColor = color.toMutableList()
+
+        binding.mobileColor.adapter = adpColor
+
     }
 }

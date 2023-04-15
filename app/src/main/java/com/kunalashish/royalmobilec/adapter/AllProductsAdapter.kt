@@ -71,6 +71,7 @@ class AllProductsAdapter(val c: Context, val l: List<Product>,val db : NetworkCa
         }
     }
 
+
     fun getCatById(id : Int,s : (String)-> Unit){
         var d = db.getCategoryById(id)
         d.enqueue(object : Callback<Category?> {

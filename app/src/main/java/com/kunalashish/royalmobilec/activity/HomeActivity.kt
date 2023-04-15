@@ -172,8 +172,6 @@ class HomeActivity : AppCompatActivity() {
 
             else -> super.onBackPressed()
         }
-
-
     }
 
 }
