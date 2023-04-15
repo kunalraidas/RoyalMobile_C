@@ -1,20 +1,32 @@
 package com.kunalashish.royalmobilec.activity
-import android.content.Intent
+
+
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.FrameLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.kunalashish.royalmobilec.R
-import com.kunalashish.royalmobilec.ResetPassword
-import com.kunalashish.royalmobilec.adapter.MainViewPagerAdapter
+
 import com.kunalashish.royalmobilec.databinding.ActivityHomeBinding
+import com.kunalashish.royalmobilec.fragment.AboutUsFragment
+import com.kunalashish.royalmobilec.fragment.LogoutFragment
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var coordinatorLayout: CoordinatorLayout
+    private lateinit var toolbar: Toolbar
+    private lateinit var frameLayout: FrameLayout
+    private lateinit var navigationView: NavigationView
+
     var previousItem: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,74 +34,145 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(DashboardFragment())
-        setupViewPager()
+        drawerLayout = findViewById(R.id.drawerlayout)
+        coordinatorLayout = findViewById(R.id.coordinatorlayout)
+        toolbar = findViewById(R.id.toolbar)
+        frameLayout = findViewById(R.id.frame)
+        navigationView = findViewById(R.id.NavigationView)
+
+       // replaceFragment(DashboardFragment())
+        setUpTollbar()
+        openDashboard()
+
+        val actionBarDrawerTogle = ActionBarDrawerToggle(
+            this@HomeActivity,drawerLayout,R.string.open_drawer,
+            R.string.close_drawer
+        )
+
+        drawerLayout.addDrawerListener(actionBarDrawerTogle)
+        actionBarDrawerTogle.syncState()
 
 
         binding.NavigationView.setNavigationItemSelectedListener {
-            if (previousItem != null) {
+
+            if (previousItem != null){
                 previousItem?.isChecked = false
             }
 
-            it.isCheckable = true
             it.isChecked = true
+            it.isCheckable = true
             previousItem = it
 
 
-            when (it.itemId) {
-                R.id.home -> {
-                    replaceFragment(DashboardFragment())
-                    //drawerLayout.closeDrawers()
 
+            when(it.itemId){
+                R.id.home -> {
+                   openDashboard()
+                    drawerLayout.closeDrawers()
                 }
+
                 R.id.notification -> {
-                    replaceFragment(NotificationFragment())
-                    //drawerLayout.closeDrawers()
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frame , NotificationFragment()
+                    ).commit()
+
+                    supportActionBar?.title = "Notification"
+                    drawerLayout.closeDrawers()
                 }
+
                 R.id.rewards -> {
-                    // replaceFragment()
-                    replaceFragment(RewardsFragment())
-                    // drawerLayout.closeDrawers()
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frame , RewardsFragment()
+                    ).commit()
+
+                    supportActionBar?.title = "Rewards"
+                    drawerLayout.closeDrawers()
                 }
-                R.id.order -> {
-                    replaceFragment(OrderFragment())
-                    //  drawerLayout.closeDrawers()
-                }
-                R.id.Cart -> {
-                    replaceFragment(CartFragment())
-                    //replaceFragment(CartFragment())
-                    // drawerLayout.closeDrawers()
-                }
+
                 R.id.favourites -> {
-                    replaceFragment(FavouritrsFragment())
-                    //  drawerLayout.closeDrawers()
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frame , FavouritrsFragment()
+                    ).commit()
+
+                    supportActionBar?.title = "Favourites"
+                    drawerLayout.closeDrawers()
                 }
+
                 R.id.profile -> {
-                    replaceFragment(ProfileFragment())
-                    // drawerLayout.closeDrawers()
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frame , ProfileFragment()
+                    ).commit()
+
+                    supportActionBar?.title = "Profile"
+                    drawerLayout.closeDrawers()
+                }
+
+                R.id.log_out -> {
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frame , LogoutFragment()
+                    ).commit()
+
+                    supportActionBar?.title = "Logout"
+                    drawerLayout.closeDrawers()
+                }
+                R.id.information -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(
+                            R.id.frame , AboutUsFragment()
+                        ).commit()
+
+                    supportActionBar?.title = "About us"
+                    drawerLayout.closeDrawers()
                 }
             }
+
             return@setNavigationItemSelectedListener true
             //binding.bottomNavigationView.setupWithNavController(B)
         }
     }
-    /* @SuppressLint("RestrictedApi")
-   fun setUpToolbar(toolbar: Toolbar){
-       setSupportActionBar(toolbar)
-       supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
-       supportActionBar?.setHomeButtonEnabled(true)
-   }*/
 
-    private fun replaceFragment(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame, fragment)
-        fragmentTransaction.commit()
+//    private fun replaceFragment(fragment: Fragment) {
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.frame, fragment)
+//        fragmentTransaction.commit()
+//    }
+
+    private fun setUpTollbar(){
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Toolbar title"
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun setupViewPager() {
-        val flist = listOf(DashboardFragment(), CartFragment(), ProfileFragment())
-        binding.viewPager.adapter = MainViewPagerAdapter(flist, this@HomeActivity)
-        binding.bottomNavigationView.setupWithViewPager2(binding.viewPager)
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id =  item.itemId
+
+        if (id == android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+        return super.onOptionsItemSelected(item)
     }
+
+    private fun openDashboard(){
+        val fragment = DashboardFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame,fragment)
+        transaction.commit()
+        supportActionBar?.title = "Dashboard"
+        navigationView.setCheckedItem(R.id.home)
+    }
+
+    override fun onBackPressed() {
+
+        val frag = supportFragmentManager.findFragmentById(R.id.frame)
+        when(frag){
+            !is  DashboardFragment -> openDashboard()
+
+            else -> super.onBackPressed()
+        }
+    }
+
 }

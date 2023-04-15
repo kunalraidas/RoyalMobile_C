@@ -218,3 +218,11 @@ package com.kunalashish.royalmobilec.utils
 ///>
 //
 
+//<!--        <ImageView-->
+//<!--            android:id="@+id/img_banner"-->
+//<!--            android:layout_width="wrap_content"-->
+//<!--            android:layout_height="wrap_content"-->
+//<!--            android:layout_marginStart="-2dp"-->
+//<!--            android:layout_marginTop="-71dp"-->
+//<!--            android:layout_marginBottom="-9dp"-->
+//<!--            android:src="@drawable/mobile_banner1" />-->
