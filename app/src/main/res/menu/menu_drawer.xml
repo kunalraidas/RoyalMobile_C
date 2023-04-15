@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="Dashboard"
         android:icon="@drawable/home"/>
     <item
         android:id="@+id/notification"
@@ -12,27 +13,26 @@
         android:id="@+id/rewards"
         android:title="@string/my_rewards"
         android:icon="@drawable/ic_favouritrs"/>
-    <item
-        android:id="@+id/order"
-        android:title="@string/order"
-        android:icon="@drawable/ic_order"/>
-    <item
-        android:id="@+id/Cart"
-        android:title="@string/cart"
-        android:icon="@drawable/ic_cart"/>
+
     <item
         android:id="@+id/favourites"
         android:title="@string/favourites"
         android:icon="@drawable/ic_favouritrs"/>
+
     <item
         android:id="@+id/profile"
         android:title="@string/Profile"
         android:icon="@drawable/ic_profile"/>
-    <group>
+
+
         <item
             android:id="@+id/log_out"
             android:title="@string/btn_logout"
             android:icon="@drawable/logout"/>
+
+        <item android:id="@+id/information"
+            android:title="About us"
+            android:icon="@drawable/baseline_info_24"/>
     </group>
 
 

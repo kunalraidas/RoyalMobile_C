@@ -17,15 +17,17 @@ class CartViewModel : ViewModel() {
     val msg = MutableLiveData<String>("")
 
     companion object{
+
         val db = NetworkService.networkInstance
+
     }
 
     fun getAllCarts(email : String){
-        val r = db.getCartById(email)
+        val r = db.getCartByEmail(email)
         r.enqueue(object : Callback<List<Cart>?> {
             override fun onResponse(call: Call<List<Cart>?>, response: Response<List<Cart>?>) {
                 if(response.body()!=null){
-                    val c = response!!.body()!!.sortedBy {
+                    val c = response.body()!!.sortedBy {
                         it.cart_id
                     }
                     carts.postValue(c)
@@ -102,4 +104,5 @@ class CartViewModel : ViewModel() {
             }
         })
     }
+
 }
