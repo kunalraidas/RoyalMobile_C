@@ -60,15 +60,25 @@ class ProductDetailsActivity : AppCompatActivity() {
             ) {
                 var ramId = 0
                 var text = ""
-                if(!mMobile.isNullOrEmpty()){
+                if (!mMobile.isNullOrEmpty()) {
                     text = (view as TextView).text.toString()
                     ramId = mMobile.filter {
                         it.ram == text
                     }.map {
                         it.mobile_id
                     }.first()
+
+                    var price = mMobile.filter {
+                        it.ram == text
+                    }.map {
+                        it.price.toString()
+                    }.first()
+
+                    binding.productPrice.text = "Rs $price"
+
                 }
-                Toast.makeText(this@ProductDetailsActivity, "$text $ramId", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductDetailsActivity, "$text $ramId", Toast.LENGTH_SHORT)
+                    .show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -77,7 +87,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         }
 
-        binding.mobileStorage.onItemSelectedListener = object : OnItemSelectedListener{
+        binding.mobileStorage.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -86,21 +96,57 @@ class ProductDetailsActivity : AppCompatActivity() {
             ) {
                 var storageId = 0
                 var text = ""
-                if(!mMobile.isNullOrEmpty()){
+                if (!mMobile.isNullOrEmpty()) {
                     text = (view as TextView).text.toString()
                     storageId = mMobile.filter {
                         it.storage == text
                     }.map {
                         it.mobile_id
                     }.first()
+
+                    var price = mMobile.filter {
+                        it.storage == text
+                    }.map {
+                        it.price.toString()
+                    }.first()
+
+                    binding.productPrice.text = "Rs $price"
                 }
-                Toast.makeText(this@ProductDetailsActivity, "$text $storageId", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductDetailsActivity, "$text $storageId", Toast.LENGTH_SHORT)
+                    .show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
 
+        }
+
+        binding.mobileColor.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+
+                if (!mColor.isNullOrEmpty()) {
+                    val color = (view as TextView).text
+                    val url = mColor.filter {
+                        it.color_name == color
+                    }.map {
+                        it.product_image
+                    }.first()
+
+                    Glide.with(this@ProductDetailsActivity).load(Constant.urlMaker(url.toString()))
+                        .into(binding.productImagesViewpager)
+
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
         }
     }
 
@@ -146,7 +192,12 @@ class ProductDetailsActivity : AppCompatActivity() {
                                         "Added to cart",
                                         Toast.LENGTH_SHORT
                                     ).show()
-                                    startActivity(Intent(this@ProductDetailsActivity,CartActivity::class.java))
+                                    startActivity(
+                                        Intent(
+                                            this@ProductDetailsActivity,
+                                            CartActivity::class.java
+                                        )
+                                    )
                                 } else {
                                     Toast.makeText(
                                         this@ProductDetailsActivity,
@@ -175,12 +226,11 @@ class ProductDetailsActivity : AppCompatActivity() {
                     }.first()
 
 
-
                     val r = NetworkService.networkInstance.addToCart(
                         email = email!!,
                         qty = 1,
                         mid = null,
-                        cid =cId,
+                        cid = cId,
                         asid = product!!.Accessories!!.first().access_id,
                         product = product!!
                     )
@@ -196,7 +246,12 @@ class ProductDetailsActivity : AppCompatActivity() {
                                         "Added to cart",
                                         Toast.LENGTH_SHORT
                                     ).show()
-                                    startActivity(Intent(this@ProductDetailsActivity,CartActivity::class.java))
+                                    startActivity(
+                                        Intent(
+                                            this@ProductDetailsActivity,
+                                            CartActivity::class.java
+                                        )
+                                    )
                                 } else {
                                     Toast.makeText(
                                         this@ProductDetailsActivity,
@@ -236,17 +291,17 @@ class ProductDetailsActivity : AppCompatActivity() {
                     }).into(binding.productImagesViewpager)
                 productTitle.text = product?.product_name.toString()
                 productPrice.text = product?.Mobile?.first()?.price.toString()
-                if(!product?.Mobile.isNullOrEmpty()){
+                if (!product?.Mobile.isNullOrEmpty()) {
                     binding.llMobile.visibility = View.VISIBLE
-                    loadMobileSpinners(product!!.Mobile,product!!.productColor)
-                }else{
+                    loadMobileSpinners(product!!.Mobile, product!!.productColor)
+                } else {
                     binding.llMobile.visibility = View.GONE
                 }
 
-                if(!product!!.Accessories.isNullOrEmpty()){
+                if (!product!!.Accessories.isNullOrEmpty()) {
                     binding.llAccess.visibility = View.VISIBLE
                     loadAccessSpinners(product!!)
-                }else{
+                } else {
                     binding.llAccess.visibility = View.GONE
                 }
 
@@ -261,7 +316,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
         }
         val adpAsc = color?.let {
-            ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item, it.map {
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, it.map {
                 it.color_name.toString()
             })
         }
@@ -273,12 +328,12 @@ class ProductDetailsActivity : AppCompatActivity() {
             it.mobile_id
         }
         mMobile = l.toMutableList()
-        val adpRam = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,l.map {
+        val adpRam = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, l.map {
             it.ram.toString()
         })
         binding.mobileRam.adapter = adpRam
 
-        val adpStorage =  ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,l.map {
+        val adpStorage = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, l.map {
             it.storage.toString()
         })
 
@@ -287,7 +342,7 @@ class ProductDetailsActivity : AppCompatActivity() {
         val color = productColor!!.sortedBy {
             it.color_id
         }
-        val adpColor = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,color.map {
+        val adpColor = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, color.map {
             it.color_name
         })
 
