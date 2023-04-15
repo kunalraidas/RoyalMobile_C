@@ -54,6 +54,7 @@ class CartActivity : AppCompatActivity() {
             b.setTitle("Confirm order ")
             b.setMessage("Click yes to confirm ")
             b.setPositiveButton("Yes"){d,w ->
+
                 val c = CartList(vm.carts.value!!)
                 vm.addOrder(c)
             }
