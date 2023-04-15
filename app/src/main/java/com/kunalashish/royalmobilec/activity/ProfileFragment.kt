@@ -51,14 +51,15 @@ class ProfileFragment : Fragment() {
             val intent2 = Intent(activity,OrderActivity::class.java)
             startActivity(intent2)
         }
-
-
         return binding.root
+    }
+    companion object{
+        val db = NetworkService.networkInstance
     }
 
     private fun getCustomer(){
         val b = customerEmail?.let {
-            NetworkService.networkInstance.getCustomerDetails(it)
+            db.getCustomerDetails(it)
                 .enqueue(object : Callback<Customer?> {
                     override fun onResponse(call: Call<Customer?>, response: Response<Customer?>) {
                         binding.username.text = response.body()?.first_name
