@@ -64,7 +64,7 @@ interface NetworkCallInterface {
     @POST("order/id")
     fun getOrderById(@Query("id") orderId : String) : Call<Order>
 
-    @GET("order/get_email_order")
+    @POST("order/get_email_order")
     fun getOrderByEmail(@Query("email")email: String) : Call<List<Order>>
 
     @POST("order/id")
