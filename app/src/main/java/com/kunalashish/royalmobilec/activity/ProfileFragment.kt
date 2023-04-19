@@ -59,6 +59,7 @@ class ProfileFragment : Fragment() {
         }
 
         return binding.root
+
     }
 
     private fun logout() {
