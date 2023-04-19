@@ -90,7 +90,7 @@
             android:layout_height="3dp"
             android:layout_marginStart="9dp"
             android:layout_marginTop="8dp"
-            android:progress="0"
+            android:progress="100"
             android:progressBackgroundTint="#d6d6d6"
             android:progressTint="@color/successgreen"
             android:rotation="90"
