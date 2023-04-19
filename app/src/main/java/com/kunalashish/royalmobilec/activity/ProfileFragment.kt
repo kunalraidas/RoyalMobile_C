@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.kunalashish.royalmobilec.R
 import com.kunalashish.royalmobilec.data.models.Customer
+import com.kunalashish.royalmobilec.data.product.CartList
 import com.kunalashish.royalmobilec.databinding.FragmentProfileBinding
 import com.kunalashish.royalmobilec.network.NetworkService
 import com.kunalashish.royalmobilec.utils.Constant
@@ -51,9 +53,34 @@ class ProfileFragment : Fragment() {
             val intent2 = Intent(activity,OrderActivity::class.java)
             startActivity(intent2)
         }
+
+        binding.logoutButton.setOnClickListener {
+            logout()
+        }
+
         return binding.root
 
     }
+
+    private fun logout() {
+        val hello = AlertDialog.Builder(requireContext())
+        hello.setTitle("Logout")
+        hello.setMessage("Click Yes to Logout")
+        hello.setPositiveButton("Yes"){d,w->
+                logoutUser()
+        }
+        hello.setNegativeButton("No"){d,w->
+            Toast.makeText(requireContext(),"Logout Cencle",Toast.LENGTH_LONG).show()
+            d.dismiss()
+        }
+        hello.show()
+    }
+
+    private fun logoutUser() {
+
+    }
+
+
     companion object{
         val db = NetworkService.networkInstance
     }
@@ -80,9 +107,8 @@ class ProfileFragment : Fragment() {
         if (!customerEmail.isNullOrEmpty())
         {
             return customerEmail
-//            startActivity(Intent(this,MainActivity::class.java))
-//            finish()
         }
         return null
     }
 }
+

@@ -28,4 +28,6 @@ class OrderDetailsActivity : AppCompatActivity() {
         binding.rvProductItemsNew.adapter = OrderDetailsAdapter(this,o.orderItems!!)
         Toast.makeText(this, "Size is : ${o.orderItems.size}", Toast.LENGTH_SHORT).show()
     }
+
+
 }

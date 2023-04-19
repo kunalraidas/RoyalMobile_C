@@ -5,14 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    android:focusable="true"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/linearLayout6"
@@ -60,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Welcome User"
+                android:text="Kunal"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -70,7 +67,7 @@
                 android:id="@+id/user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="customer email"
+                android:text="kunalkunal74433@gmail.com"
                 android:textAlignment="center"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -184,6 +181,18 @@
     </FrameLayout>
 
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:background="@color/primary_color"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Logout"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="18sp"/>
 
 </LinearLayout>
 
