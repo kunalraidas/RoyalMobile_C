@@ -27,12 +27,14 @@ class OrderActivity : AppCompatActivity() {
 
         if (email!= null){
             vm.getAllOrder(email!!)
+        }else{
+            Toast.makeText(this, "Email is null", Toast.LENGTH_SHORT).show()
         }
 
         setupObserver()
         setUpClickListener()
 
-        setContentView(R.layout.activity_order)
+        setContentView(binding.root)
     }
 
     private fun setUpClickListener() {
@@ -41,14 +43,13 @@ class OrderActivity : AppCompatActivity() {
 
     private fun setupObserver() {
         vm.orders.observe(this){
-            if (!it.isNullOrEmpty()){
-                binding.recycleOrder.adapter = AllOrderAdapter(this,it,vm)
-//                binding.recycleOrder.adapter = OrderAdapter(this,it,vm)
 
-            }
+            Toast.makeText(this, "$it", Toast.LENGTH_SHORT).show()
+            binding.recycleOrder.adapter = AllOrderAdapter(this,it!!,vm)
+//                binding.recycleOrder.adapter = OrderAdapter(this,it,vm)
         }
         vm.msg.observe(this){
-            binding.errorMessageForOrder.text = it.toString()
+           // binding.errorMessageForOrder.text = it.toString()
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }

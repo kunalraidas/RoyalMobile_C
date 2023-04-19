@@ -84,7 +84,6 @@ class ProductDetailsActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
-
         }
 
         binding.mobileStorage.onItemSelectedListener = object : OnItemSelectedListener {
@@ -304,8 +303,6 @@ class ProductDetailsActivity : AppCompatActivity() {
                 } else {
                     binding.llAccess.visibility = View.GONE
                 }
-
-
             }
         }
     }
