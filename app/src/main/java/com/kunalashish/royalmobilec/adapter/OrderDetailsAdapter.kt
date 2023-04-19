@@ -1,10 +1,12 @@
 package com.kunalashish.royalmobilec.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.kunalashish.royalmobilec.activity.OrderDetailsActivity
 import com.kunalashish.royalmobilec.data.product.OrderItem
 import com.kunalashish.royalmobilec.databinding.OrderItemNewLayoutBinding
 import com.kunalashish.royalmobilec.utils.Constant
@@ -19,6 +21,7 @@ class OrderDetailsAdapter(val c: Context, val list: List<OrderItem>) :
             val txtProductPrice = binding.txtOrderItemTotal
             val txtProductQty = binding.txtOrderItemQuantity
             val imgProduct = binding.imgOrder
+            val productCard = binding.orderCard
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderItemViewHolder {
@@ -41,6 +44,12 @@ class OrderDetailsAdapter(val c: Context, val list: List<OrderItem>) :
             txtProductName.text = p.product?.product_name.toString()
             txtProductQty.text = "Quantity : ${p.quantity}"
             txtProductPrice.text = "Rs . ${p.totalPrice}"
+
+            productCard.setOnClickListener {
+               val its = Intent(c,OrderDetailsActivity::class.java)
+                its.putExtra("order",p)
+                c.startActivity(its)
+            }
             Glide.with(c).load(Constant.urlMaker(p.product?.productColor?.first()?.product_image!!)).into(imgProduct)
         }
     }
