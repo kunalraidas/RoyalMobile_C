@@ -1,5 +1,6 @@
 package com.kunalashish.royalmobilec.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -18,10 +19,15 @@ class order_item_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-//        binding.imgCart.setOnClickListener {
+
+//        binding.allOrderActivity.addOnItemTouchListener() {
+//            startActivity(Intent(this, OrderDetailsActivity::class.java))
+//        }
+//        binding.allOrderActivity.setOnClickListener {
 //            startActivity(Intent(this, OrderDetailsActivity::class.java))
 //        }
 
+//        binding.allOrderActivity.
         vm = ViewModelProvider(this).get(
            OrderViewModel::class.java
         )

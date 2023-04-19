@@ -7,6 +7,7 @@ import com.kunalashish.royalmobilec.databinding.ActivityOrderDetailsBinding
 class OrderDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOrderDetailsBinding
+    var email : String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderDetailsBinding.inflate(layoutInflater)
