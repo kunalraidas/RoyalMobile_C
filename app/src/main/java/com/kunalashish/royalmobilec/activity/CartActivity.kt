@@ -42,7 +42,6 @@ class CartActivity : AppCompatActivity() {
        // getCustomerDetails()
 
         isLoggedIn()
-
         getCustomer()
 
         setContentView(binding.root)
@@ -86,6 +85,7 @@ class CartActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }
+
     companion object{
         val db = NetworkService.networkInstance
     }
