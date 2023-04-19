@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="Kunal"
+                android:text="Welcome User"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp"
@@ -70,7 +70,7 @@
                 android:id="@+id/user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="kunalkunal74433@gmail.com"
+                android:text="customer email"
                 android:textAlignment="center"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -182,6 +182,7 @@
                 android:background="@drawable/ic_arrow" />
         </androidx.cardview.widget.CardView>
     </FrameLayout>
+
 
 
 </LinearLayout>

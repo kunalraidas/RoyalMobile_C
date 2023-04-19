@@ -52,6 +52,7 @@ class ProfileFragment : Fragment() {
             startActivity(intent2)
         }
         return binding.root
+
     }
     companion object{
         val db = NetworkService.networkInstance
