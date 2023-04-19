@@ -27,8 +27,6 @@ class CartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCartBinding.inflate(layoutInflater)
 
-        getCustomer()
-
         vm = ViewModelProvider(this).get(CartViewModel::class.java)
 
         val sharedPreferences = getSharedPreferences(Constant.user_pref, Context.MODE_PRIVATE)
@@ -44,7 +42,11 @@ class CartActivity : AppCompatActivity() {
        // getCustomerDetails()
 
         isLoggedIn()
+
+        getCustomer()
+
         setContentView(binding.root)
+
     }
 
     private fun setupClickListeners() {
@@ -93,9 +95,12 @@ class CartActivity : AppCompatActivity() {
             db.getCustomerDetails(it)
                 .enqueue(object : Callback<Customer?> {
                     override fun onResponse(call: Call<Customer?>, response: Response<Customer?>) {
-                        binding.CustomerName.text = response.body()?.first_name
-                        binding.address.text = response.body()?.delivery_address
-                        binding.pincode.text = response.body()?.pincode.toString()
+                        binding.CustomerNameText.text = response.body()?.first_name
+                        binding.CustomerAddressText.text = response.body()?.delivery_address
+                        binding.CustomerPincodeText.text = response.body()?.pincode.toString()
+//                        binding.CustomerName.text = response.body()?.first_name
+//                        binding.address.text = response.body()?.delivery_address
+//                        binding.pincode.text = response.body()?.pincode.toString()
                     }
                     override fun onFailure(call: Call<Customer?>, t: Throwable) {
                         Toast.makeText(this@CartActivity, "Some Problem $t", Toast.LENGTH_SHORT).show()
