@@ -38,6 +38,7 @@ class CartActivity : AppCompatActivity() {
         if(email!=null){
             vm.getAllCarts(email!!)
         }
+
         setupObservers()
         setupClickListeners()
        // getCustomerDetails()
@@ -50,13 +51,13 @@ class CartActivity : AppCompatActivity() {
         binding.btnOrderNow.setOnClickListener {
 
             val b = AlertDialog.Builder(this)
-
             b.setTitle("Confirm order ")
             b.setMessage("Click yes to confirm ")
             b.setPositiveButton("Yes"){d,w ->
 
                 val c = CartList(vm.carts.value!!)
                 vm.addOrder(c)
+
             }
             b.setNegativeButton("No"){d,w ->
                 Toast.makeText(this@CartActivity, "Order canceled", Toast.LENGTH_SHORT).show()

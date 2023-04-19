@@ -47,8 +47,6 @@ class OrderActivity : AppCompatActivity() {
             Toast.makeText(this, "$it", Toast.LENGTH_SHORT).show()
             binding.recycleOrder.adapter = AllOrderAdapter(this,it!!,vm)
 //                binding.recycleOrder.adapter = OrderAdapter(this,it,vm)
-
-
         }
         vm.msg.observe(this){
            // binding.errorMessageForOrder.text = it.toString()

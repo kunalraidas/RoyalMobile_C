@@ -22,8 +22,6 @@ class OrderDetailsActivity : AppCompatActivity() {
         if(o!=null)
             loadData(o)
         setContentView(binding.root)
-
-
     }
 
     private fun loadData(o: Order) {
