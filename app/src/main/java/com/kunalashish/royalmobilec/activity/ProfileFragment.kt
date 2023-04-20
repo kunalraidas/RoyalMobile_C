@@ -77,7 +77,12 @@ class ProfileFragment : Fragment() {
     }
 
     private fun logoutUser() {
-
+            val sharedPreferences = requireContext().getSharedPreferences(Constant.user_pref,Context.MODE_PRIVATE)
+            val s = sharedPreferences.edit()
+            s.clear()
+            s.putString(Constant.user_login,null)
+            s.apply()
+            requireActivity().finish()
     }
 
 

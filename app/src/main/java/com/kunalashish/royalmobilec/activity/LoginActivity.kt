@@ -97,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 else
                 {
-                    Toast.makeText(this@LoginActivity,"Response is null",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity,"Email Not Found",Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -107,3 +107,4 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 }
+
