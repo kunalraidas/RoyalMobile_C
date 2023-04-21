@@ -1,12 +1,14 @@
 package com.kunalashish.royalmobilec.activity
 
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.kunalashish.royalmobilec.R
 import com.kunalashish.royalmobilec.data.models.Customer
 import com.kunalashish.royalmobilec.data.product.OrderItem
 import com.kunalashish.royalmobilec.databinding.ActivityOrderDetailsBinding
@@ -21,6 +23,8 @@ class OrderDetailsActivity : AppCompatActivity() {
     var orderItem : OrderItem? = null
     var customerEmail : String ? = null
     var email: String? = null
+    var arrayOfColor: Array<Int> = arrayOf(Color.YELLOW,Color.GRAY)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +50,13 @@ class OrderDetailsActivity : AppCompatActivity() {
         binding.totalItemsPrice.text = o.totalPrice.toString()
         binding.totalPrice.text = o.totalPrice.toString()
 
+        binding.imageView10.setOnClickListener {
+           // binding.imageView10.setColorFilter(arratOfColoes[Random().nextInt(size)],PorterDuff.Mode.OVERLAY)
+            //binding.imageView10.setColorFilter(ContextCompat.getColor(baseContext.arrayOfColor), PorterDuff.Mode.SRC_IN)
+           // binding.imageView10.setColorFilter(ContextCompat.getColor(context, R.color.buttoncolor), PorterDuff.Mode.SRC_IN)
+        }
+
+            // imageView.setColorFilter(ContextCompat.getColor(context, R.color.newColor), PorterDuff.Mode.SRC_IN)
         setUpClickLisetner()
 
 
