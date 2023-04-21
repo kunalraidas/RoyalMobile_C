@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
@@ -48,7 +49,12 @@ class CartAdapter(val c: Context, val l: List<Cart>, val vm: CartViewModel) :
             total.text = "Total : Rs ${p.total_price}"
             btnPlus.setOnClickListener {
                 val q = p.quentity + 1
-                vm.updateCart(q,p.email,p.product)
+                if(q<=5){
+                    vm.updateCart(q,p.email,p.product)
+                }else{
+                    Toast.makeText(c, "Max quantity is 5", Toast.LENGTH_SHORT).show()
+                }
+
             }
             btnMinus.setOnClickListener {
                 val q = p.quentity - 1

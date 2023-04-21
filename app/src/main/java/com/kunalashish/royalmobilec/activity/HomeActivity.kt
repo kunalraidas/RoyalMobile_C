@@ -175,4 +175,8 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun sendData(){
+
+    }
+
 }
