@@ -11,6 +11,7 @@ import com.kunalashish.royalmobilec.databinding.ActivityRegisterBinding
 import com.kunalashish.royalmobilec.network.NetworkService
 import com.kunalashish.royalmobilec.utils.Constant.user_pref
 import com.kunalashish.royalmobilec.utils.Constant.user_register
+import com.kunalashish.royalmobilec.utils.Constant.user_register_details
 import retrofit2.Response
 import javax.security.auth.callback.Callback
 
@@ -46,9 +47,6 @@ class RegisterActivity : AppCompatActivity() {
         return passwordRegex.matches(password)
     }
 
-
-
-
     private fun registerCustomer()
     {
         val email = binding.edtEmail.text.toString()
@@ -64,10 +62,13 @@ class RegisterActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences(user_pref, Context.MODE_PRIVATE)
 
-        val r = database.register(Register_Request
-            (email = email, password = password, first_name = first_name,
-            last_name = last_name, phone_no = phone, cust_address = cust_address ,
-            delivery_address = delivery_address, pincode = pincode ))
+
+        val r = database.register(
+            Register_Request(
+            email=email,password=password,first_name=first_name,
+            last_name = last_name, phone_no = phone, cust_address = cust_address,
+            delivery_address = delivery_address, pincode = pincode)
+        )
 
         r.enqueue(object : retrofit2.Callback<Simple_Response?> {
             override fun onResponse(
@@ -81,31 +82,26 @@ class RegisterActivity : AppCompatActivity() {
                     if (b.success)
                     {
                         val s = sharedPreferences.edit()
-                        s.putString(user_register,email)
+                        s.putString(user_register_details,email)
                         s.apply()
                         Toast.makeText(this@RegisterActivity,"Register Successfully",Toast.LENGTH_LONG).show()
                         startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
                         finish()
-                    }
-                    else
+                    } else
                     {
-                        Toast.makeText(this@RegisterActivity,"Some  Problem occur",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@RegisterActivity,"Some  Field Missing",Toast.LENGTH_LONG).show()
                     }
-                }
-                else
+                } else
                 {
-                    Toast.makeText(this@RegisterActivity,"Response is null",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@RegisterActivity,"$b",Toast.LENGTH_LONG).show()
                 }
             }
 
             override fun onFailure(call: retrofit2.Call<Simple_Response?>, t: Throwable) {
-
                  binding.registerTitle.text = t.message.toString()
                 Toast.makeText(this@RegisterActivity,t.message.toString(),Toast.LENGTH_LONG).show()
             }
         })
-
     }
-
 }
 
