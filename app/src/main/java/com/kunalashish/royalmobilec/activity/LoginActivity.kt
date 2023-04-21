@@ -10,6 +10,7 @@ import com.kunalashish.royalmobilec.data.response.Simple_Response
 import com.kunalashish.royalmobilec.databinding.ActivityLoginBinding
 import com.kunalashish.royalmobilec.network.NetworkService
 import com.kunalashish.royalmobilec.utils.Constant.user_login
+import com.kunalashish.royalmobilec.utils.Constant.user_login_details
 import com.kunalashish.royalmobilec.utils.Constant.user_pref
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun isLoggedIn(){
         val sharedPreferences = getSharedPreferences(user_pref,Context.MODE_PRIVATE)
-        customerEmail = sharedPreferences.getString(user_login,null)
+        customerEmail = sharedPreferences.getString(user_login_details,null)
         if (!customerEmail.isNullOrEmpty())
         {
             startActivity(Intent(this,HomeActivity::class.java))
@@ -84,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                     if (b.success)
                     {
                         val s = sharedPreferences.edit()
-                        s.putString(user_login,email)
+                        s.putString(user_login_details,email)
                         s.apply()
                         Toast.makeText(this@LoginActivity,"Login successfully", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@LoginActivity,HomeActivity::class.java))

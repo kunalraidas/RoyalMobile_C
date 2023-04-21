@@ -42,8 +42,7 @@
                     android:clickable="true"
                     android:tint="#9e9e9e"
                     app:backgroundTint="@android:color/background_light"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_alignParentRight="true"
                     app:rippleColor="@color/primary_color"
                     app:srcCompat="@drawable/red_heart" />
 
@@ -51,7 +50,7 @@
 
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -216,7 +215,7 @@
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     android:id="@+id/txtProductDescription"
                     android:layout_width="match_parent"
                     android:hint="Product Description"

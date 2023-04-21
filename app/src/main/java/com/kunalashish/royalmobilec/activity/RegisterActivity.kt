@@ -11,6 +11,7 @@ import com.kunalashish.royalmobilec.databinding.ActivityRegisterBinding
 import com.kunalashish.royalmobilec.network.NetworkService
 import com.kunalashish.royalmobilec.utils.Constant.user_pref
 import com.kunalashish.royalmobilec.utils.Constant.user_register
+import com.kunalashish.royalmobilec.utils.Constant.user_register_details
 import retrofit2.Response
 import javax.security.auth.callback.Callback
 
@@ -81,7 +82,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (b.success)
                     {
                         val s = sharedPreferences.edit()
-                        s.putString(user_register,email)
+                        s.putString(user_register_details,email)
                         s.apply()
                         Toast.makeText(this@RegisterActivity,"Register Successfully",Toast.LENGTH_LONG).show()
                         startActivity(Intent(this@RegisterActivity,LoginActivity::class.java))
